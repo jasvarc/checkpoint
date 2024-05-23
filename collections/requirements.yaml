@@ -1,2 +1,2 @@
----
-- name: required collections
+collections:
+  - name: check_point.mgmt
