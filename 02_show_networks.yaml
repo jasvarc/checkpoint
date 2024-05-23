@@ -1,0 +1,9 @@
+---
+- hosts: all
+  connection: httpapi
+  gather_facts: false
+  tasks:
+    
+  - name: show network facts
+    check_point.mgmt.cp_mgmt_network_facts:
+    ignore_errors: true
