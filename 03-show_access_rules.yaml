@@ -8,10 +8,6 @@
     delegate_to: 127.0.0.1
       
   tasks:
-  - name: show network facts
-    check_point.mgmt.cp_mgmt_network_facts:
-    ignore_errors: true
-
   - name: show-access-rulebase
     check_point.mgmt.cp_mgmt_access_rule_facts:
       details_level: standard
@@ -20,8 +16,3 @@
       offset: 0
       use_object_dictionary: true
     ignore_errors: true
-
-  - shell: |
-      ansible-galaxy collection list
-    delegate_to: localhost
-
