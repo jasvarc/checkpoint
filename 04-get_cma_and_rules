@@ -1,0 +1,70 @@
+---
+- name: set vars
+  hosts: localhost
+  gather_facts: false
+  tasks: 
+  - set_fact:
+      g_mds_ip: "10.70.32.25"
+
+- name: get cma from mds
+  hosts: "{{ hostvars['localhost']['g_mds_ip'] }}"
+  connection: httpapi
+  gather_facts: false
+  vars:
+    - ansible_httpapi_use_ssl: true
+    - ansible_httpapi_validate_certs: false
+    - ansible_network_os: check_point.mgmt.checkpoint
+  tasks:
+  - name: show domains
+    check_point.mgmt.cp_mgmt_domain_facts:
+      details_level: full
+      limit: 50
+      offset: 0
+    ignore_errors: true
+    register: domains
+#  - name: print output
+#    debug:
+#      msg: 
+#        - "domain: {{ domains.ansible_facts.domains.objects[0].name }}"
+#        - "server name: {{ domains.ansible_facts.domains.objects[0].servers[0].name }}"
+#        - "server ip: {{ domains.ansible_facts.domains.objects[0].servers[0]['ipv4-address'] }}"
+  - set_fact:
+      mds_cma_ip: "{{ domains.ansible_facts.domains.objects[0].servers[0]['ipv4-address'] }}"
+
+- name: get cma_ip variable from mds
+  hosts: localhost
+  gather_facts: false
+  tasks:
+  - set_fact:
+      g_cma_ip: "{{ hostvars[g_mds_ip]['mds_cma_ip'] }}"
+
+- name: get rules count from cma
+  hosts: "{{ hostvars['localhost']['g_cma_ip'] }}"
+  connection: httpapi
+  gather_facts: false
+  vars:
+    - ansible_httpapi_use_ssl: true
+    - ansible_httpapi_validate_certs: false
+    - ansible_network_os: check_point.mgmt.checkpoint
+  tasks:
+  - name: show-access-rulebase
+    check_point.mgmt.cp_mgmt_access_rule_facts:
+      details_level: standard
+      limit: 20
+      name: Network
+      offset: 0
+      use_object_dictionary: true
+    ignore_errors: true
+    register: rules
+  - name: print rule count
+    debug:
+      msg: 
+        - "rules count: {{ rules.ansible_facts['access-rulebase'].total }}"
+  - name: print rule names
+    debug:
+      msg: 
+        - "rule comments: {{ item.comments }}"
+    with_items:
+    - "{{ rules.ansible_facts['access-rulebase'].rulebase }}"
+    loop_control:
+      label: "{{ item.name }}"
