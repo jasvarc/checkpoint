@@ -67,7 +67,9 @@
   - name: print rule names
     debug:
       msg: 
-        - "rule name: {{ item.name }}"
+        - "section name: {{ item.name }}"
+        - "section rules from: {{ item.from }}"
+        - "section rules to: {{ item.to }}"
     with_items:
     - "{{ rules.ansible_facts['access-rulebase'].rulebase }}"
     loop_control:
