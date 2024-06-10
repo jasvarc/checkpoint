@@ -2,6 +2,10 @@
 - name: set vars
   hosts: localhost
   gather_facts: false
+  pre_tasks:
+  - name : Install Collections dependencies
+    shell: ansible-galaxy install -r collections/requirements.yaml
+    delegate_to: 127.0.0.1
   tasks: 
   - set_fact:
       g_mds_ip: "10.70.32.25"
@@ -22,12 +26,12 @@
       offset: 0
     ignore_errors: true
     register: domains
-#  - name: print output
-#    debug:
-#      msg: 
-#        - "domain: {{ domains.ansible_facts.domains.objects[0].name }}"
-#        - "server name: {{ domains.ansible_facts.domains.objects[0].servers[0].name }}"
-#        - "server ip: {{ domains.ansible_facts.domains.objects[0].servers[0]['ipv4-address'] }}"
+  - name: print output
+    debug:
+      msg: 
+        - "domain: {{ domains.ansible_facts.domains.objects[0].name }}"
+        - "server name: {{ domains.ansible_facts.domains.objects[0].servers[0].name }}"
+        - "server ip: {{ domains.ansible_facts.domains.objects[0].servers[0]['ipv4-address'] }}"
   - set_fact:
       mds_cma_ip: "{{ domains.ansible_facts.domains.objects[0].servers[0]['ipv4-address'] }}"
 
