@@ -10,7 +10,7 @@
   - name: set MDS IP
     set_fact:
       g_mds_ip: "10.70.32.25"
-  - mame: set CMA IP
+  - name: set CMA IP
     set_fact:
       g_cma_ip: "10.70.32.26"
   
