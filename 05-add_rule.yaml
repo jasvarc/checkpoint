@@ -24,10 +24,10 @@
   - name: show-access-rulebase
     check_point.mgmt.cp_mgmt_access_rule_facts:
       details_level: standard
-      name: Network
+      layer: Network
       offset: 0
-#      limit: 20
-#      use_object_dictionary: true
+      limit: 20
+      use_object_dictionary: true
     ignore_errors: true  
 #  - name: add SMTP rule
 #    check_point.mgmt.cp_mgmt_access_rule:
