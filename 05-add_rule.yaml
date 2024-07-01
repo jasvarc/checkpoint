@@ -14,7 +14,7 @@
 - name: work on CMA
   hosts: "{{ hostvars['localhost']['g_cma_ip'] }}"
   connection: httpapi
-  gather_facts: true
+  gather_facts: false
   tasks:
   - name: show-access-layers
     cp_mgmt_access_layer_facts:
