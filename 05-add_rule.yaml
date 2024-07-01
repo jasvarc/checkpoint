@@ -30,7 +30,7 @@
       name: Network
       offset: 0
       limit: 50
-      use_object_dictionary: false
+      use_object_dictionary: true
       version: 1.7
     ignore_errors: true  
 #  - name: add SMTP rule
