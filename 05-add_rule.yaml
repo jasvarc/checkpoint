@@ -25,8 +25,8 @@
     check_point.mgmt.cp_mgmt_access_rule_facts:
       details_level: standard
       layer: Network
-      rule-number: 0
-#      offset: 0
+#      rule-number: 0
+      offset: 0
 #      limit: 20
 #      use_object_dictionary: true
     ignore_errors: true  
