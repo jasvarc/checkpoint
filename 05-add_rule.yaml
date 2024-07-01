@@ -19,7 +19,7 @@
   - name: show-access-rulebase
     check_point.mgmt.cp_mgmt_access_rule_facts:
       details_level: standard
-      limit: 20
+#      limit: 20
       name: Network
       offset: 0
       use_object_dictionary: true
