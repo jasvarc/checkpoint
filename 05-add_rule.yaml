@@ -25,10 +25,7 @@
     check_point.mgmt.cp_mgmt_access_rule_facts:
       details_level: standard
       layer: Network
-#      rule-number: 0
-      offset: 0
-#      limit: 20
-#      use_object_dictionary: true
+      name: Network
     ignore_errors: true  
 #  - name: add SMTP rule
 #    check_point.mgmt.cp_mgmt_access_rule:
