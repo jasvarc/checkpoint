@@ -1,0 +1,16 @@
+---
+- name: set vars
+  hosts: localhost
+  gather_facts: false
+  pre_tasks:
+  - name : Install Collections dependencies
+    shell: ansible-galaxy install -r collections/requirements.yaml
+    delegate_to: 127.0.0.1
+  tasks: 
+  - name: set MDS IP
+    set_fact:
+      g_mds_ip: "10.70.32.25"
+  - mame: set CMA IP
+    set_fact:
+      g_cma_ip: "10.70.32.26"
+  
