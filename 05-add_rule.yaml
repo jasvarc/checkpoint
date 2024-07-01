@@ -16,8 +16,10 @@
   connection: httpapi
   gather_facts: false
   tasks:
+  - name: show api versions
+    check_point.mgmt.cp_mgmt_show_api_versions
   - name: show-access-layers
-    cp_mgmt_access_layer_facts:
+    check_point.mgmt.cp_mgmt_access_layer_facts:
       details_level: standard
       limit: 50
       offset: 0
