@@ -21,7 +21,7 @@
       details_level: standard
 #      limit: 20
       name: Network
-      offset: 0
+#      offset: 0
       use_object_dictionary: true
     ignore_errors: true  
 #  - name: add SMTP rule
