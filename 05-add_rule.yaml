@@ -22,7 +22,7 @@
 #      limit: 20
       name: Network
 #      offset: 0
-      use_object_dictionary: true
+#      use_object_dictionary: true
     ignore_errors: true  
 #  - name: add SMTP rule
 #    check_point.mgmt.cp_mgmt_access_rule:
