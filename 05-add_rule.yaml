@@ -16,6 +16,11 @@
   connection: httpapi
   gather_facts: false
   tasks:
+  - name: show-access-layers
+    cp_mgmt_access_layer_facts:
+      details_level: standard
+      limit: 50
+      offset: 0
   - name: show-access-rulebase
     check_point.mgmt.cp_mgmt_access_rule_facts:
       details_level: standard
