@@ -7,11 +7,9 @@
     shell: ansible-galaxy install -r collections/requirements.yaml
     delegate_to: 127.0.0.1
   tasks: 
-  - name: set MDS IP
+  - name: set MDS and CMA IPs
     set_fact:
       g_mds_ip: "10.70.32.25"
-  - name: set CMA IP
-    set_fact:
       g_cma_ip: "10.70.32.26"
 - name: work on CMA
   hosts: "{{ hostvars['localhost']['g_cma_ip'] }}"
@@ -26,7 +24,7 @@
       offset: 0
       use_object_dictionary: true
     ignore_errors: true  
-  - name: add SMTP rule
-    check_point.mgmt.cp_mgmt_access_rule:
-      auto_publish_session: true
-      action: "Accept"
+#  - name: add SMTP rule
+#    check_point.mgmt.cp_mgmt_access_rule:
+#      auto_publish_session: true
+#      action: "Accept"
