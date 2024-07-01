@@ -31,7 +31,7 @@
       offset: 0
       limit: 50
       use_object_dictionary: false
-      version: 1.8.1
+      version: 1.7
     ignore_errors: true  
 #  - name: add SMTP rule
 #    check_point.mgmt.cp_mgmt_access_rule:
