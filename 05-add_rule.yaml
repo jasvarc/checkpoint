@@ -15,6 +15,7 @@
       g_cma_ip: "10.70.32.26"
 - name: work on CMA
   hosts: "{{ hostvars['localhost']['g_cma_ip'] }}"
+  gather_facts: false
   tasks:
   - name: show-access-rulebase
     check_point.mgmt.cp_mgmt_access_rule_facts:
