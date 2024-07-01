@@ -28,6 +28,7 @@
       details_level: standard
       name: Network
       version: 1.7
+      layer: Network
     ignore_errors: true  
 #  - name: add SMTP rule
 #    check_point.mgmt.cp_mgmt_access_rule:
