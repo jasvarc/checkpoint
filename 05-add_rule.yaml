@@ -20,7 +20,7 @@
     check_point.mgmt.cp_mgmt_show_api_versions:
   - name: show-access-layers
     check_point.mgmt.cp_mgmt_access_layer_facts:
-      details_level: standard
+      details_level: full
       limit: 50
       offset: 0
   - name: show-access-rulebase
