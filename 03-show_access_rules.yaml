@@ -12,6 +12,5 @@
     check_point.mgmt.cp_mgmt_access_rule_facts:
       details_level: standard
       name: Network
-      offset: 0
       use_object_dictionary: true
     ignore_errors: true
