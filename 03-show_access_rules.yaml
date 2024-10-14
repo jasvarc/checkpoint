@@ -12,4 +12,5 @@
     check_point.mgmt.cp_mgmt_access_rule_facts:
       details_level: standard
       name: Network
+      layer: "Standard Network" 
     ignore_errors: true
